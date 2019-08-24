@@ -1,0 +1,111 @@
+body{
+  font-family: Arial,sans-serif;
+  background: #222;
+  color: orange;
+  margin: 0px;
+}
+
+#q{
+  background: inherit;
+  color: inherit;
+  font-size: 22px;
+  border: none;
+  padding: 10px;
+  margin: 10px;
+}
+
+.thumb{
+  float: left;
+  height: 98px;
+  width: 98px;
+  margin: 1px;
+  cursor: pointer;
+  text-align:center;
+  line-height:100px;
+  font-size:60px;
+  color:orange;
+}
+
+#object-container{
+  position:fixed;
+  padding:0;
+  margin:0;
+  top:0;
+  left:0;
+  width: 100%;
+  height: 100%;
+  z-index:1;
+  display:none;
+  background-size: contain;
+}
+
+#idx-btn{
+  position: fixed;
+  width: 100%;
+  bottom: 0px;
+  height: 40px;
+  text-align: center;
+}
+
+.obj-ts{
+  position: fixed;
+  width: 300px;
+  left: 0px;
+  top: 20px;
+  height: 40px;
+  text-align: center;
+}
+
+#thumbs-container{
+  overflow:auto;
+  height:100vh;
+}
+
+#prev-btn{
+  position: fixed;
+  width: 100px;
+  left: 0px;
+  bottom: 0px;
+  height: 40px;
+  text-align: center;
+}
+
+#next-btn{
+  position: fixed;
+  width: 100px;
+  right: 0px;
+  bottom: 0px;
+  height: 40px;
+  text-align: center;
+}
+
+#dl-btn{
+  position: fixed;
+  width: 100px;
+  right: 0px;
+  top: 20px;
+  height: 40px;
+  text-align: center;
+}
+
+.obj-nav{
+  text-decoration: none;
+  color: orange;
+  cursor: pointer;
+}
+
+#overlay{
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  opacity: 1;
+}
+
+.autocomplete {
+  background: #222;
+}
+.selected {
+  background: #666;
+}

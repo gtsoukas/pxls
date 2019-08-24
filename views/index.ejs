@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>pxls</title>
+    <link rel="stylesheet" href="pxls.css">
+    <meta name="viewport" content="width=400, user-scalable=yes">
+  </head>
+  <body>
+
+    <div id="object-container">
+      <div id="overlay"></div>
+    </div>
+
+    <div id="thumbs-container">
+
+      <% if (ANALYZE_TEXT) { %>
+      <div id="search-container">
+        <form id="search-form">
+          <input id="q" type="search" autocomplete="off" placeholder="Search..."/>
+        </form>
+      </div>
+      <% } %>
+
+      <a href="/upload"><div class="thumb">+</div></a>
+
+      <!-- <% if (ANALYZE_TEXT) { %>
+      <div class="thumb" id="search-box">s</div>
+      <% } %> -->
+
+    </div>
+
+    <script src="main.js"></script>
+
+  </body>
+</html>

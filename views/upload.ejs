@@ -1,0 +1,104 @@
+<!DOCTYPE HTML>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Photos</title>
+    <meta name="viewport" content="width=400, user-scalable=yes">
+    <!-- Bootstrap styles -->
+    <link rel="stylesheet" href="lib/bootstrap/bootstrap-3.3.7-dist/css/bootstrap.min.css">
+    <!-- Generic page styles -->
+    <link rel="stylesheet" href="lib/blueimp/jQuery-File-Upload-9.12.5/css/style.css">
+    <!-- CSS to style the file input field as button and adjust the Bootstrap progress bars -->
+    <link rel="stylesheet" href="lib/blueimp/jQuery-File-Upload-9.12.5/css/jquery.fileupload.css">
+    <style>
+      .progress{
+        background-color: steelblue;
+      }
+    </style>
+  </head>
+  <body>
+
+    <div class="container">
+      <h1>Upload</h1>
+
+      <p>
+        <ul>
+          <li>Please be patient; uploading is slow; don't upload more than 10 files at once.</li>
+          <li>Only the following file types can be processed: jpg, jpeg.</li>
+          <li>Upload originals when ever possible, i.e. no resized version of photos.</li>
+          <li>Don't leave this page untill uploads are completed.</li>
+          <li>It may take several minutes until photos are shown in the index.</li>
+        </ul>
+      </p>
+      <!--<a href="/">index</a><br><br><br>-->
+
+      <!-- The fileinput-button span is used to style the file input field as button -->
+      <span class="btn btn-success fileinput-button">
+          <i class="glyphicon glyphicon-plus"></i>
+          <span>Select files for upload</span>
+          <!-- The file input field used as target for the file upload widget -->
+          <input id="fileupload" type="file" name="files[]" multiple>
+      </span>
+      <a href="/" class="btn btn-success fileinput-button">
+          <span>Go to photo index</span>
+      </a>
+      <br>
+      <br>
+      <!-- The global progress bar -->
+      <div id="progress" class="progress">
+          <div class="progress-bar progress-bar-success"></div>
+      </div>
+      <!-- The container for the uploaded files -->
+      <div id="files" class="files"></div>
+      <br>
+
+    </div>
+    <script src="lib/jquery.com/jquery-2.2.4.min.js"></script>
+    <!-- The jQuery UI widget factory, can be omitted if jQuery UI is already included -->
+    <script src="lib/blueimp/jQuery-File-Upload-9.12.5/js/vendor/jquery.ui.widget.js"></script>
+    <!-- The Iframe Transport is required for browsers without support for XHR file uploads -->
+    <script src="lib/blueimp/jQuery-File-Upload-9.12.5/js/jquery.iframe-transport.js"></script>
+    <!-- The basic File Upload plugin -->
+    <script src="lib/blueimp/jQuery-File-Upload-9.12.5/js/jquery.fileupload.js"></script>
+    <!-- Bootstrap JS is not required, but included for the responsive demo navigation -->
+    <!--<script src="lib/bootstrap/bootstrap-3.3.7-dist/css/bootstrap.min.js"></script>-->
+    <script>
+    /*jslint unparam: true */
+    /*global window, $ */
+    $(function () {
+        'use strict';
+
+        $('#fileupload').fileupload({
+            maxChunkSize: 1000000, // 1 MB
+            url: '/upload',
+            dataType: 'json',
+            //sequentialUploads: true,
+            //acceptFileTypes: /(\.|\/)(jpe?g|png)$/i,
+            //maxFileSize: 5000000,
+            done: function (e, data) {
+                $.each(data.result.files, function (index, file) {
+                    $('<p/>').text(file.name).appendTo('#files');
+                });
+            },
+            progressall: function (e, data) {
+                var progress = parseInt(data.loaded / data.total * 100, 10);
+                $('#progress .progress-bar').css(
+                    'width',
+                    progress + '%'
+                );
+            }/*,
+            add: function (e, data) {
+                var fileType = data.files[0].name.split('.').pop(), allowdtypes = 'jpeg,jpg,JPG,JPEG';
+                if (allowdtypes.indexOf(fileType) < 0) {
+                    alert('Invalid file type, aborted');
+                    return false;
+                };
+            }*/
+        }).bind('fileuploadfail', function (e, data) {alert("Error while uploading"); console.log(e,data)})
+            .prop('disabled', !$.support.fileInput)
+            .parent().addClass($.support.fileInput ? undefined : 'disabled');
+    });
+    </script>
+  </body>
+</html>

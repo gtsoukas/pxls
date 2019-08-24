@@ -1,0 +1,26 @@
+- Handle potential filename collisions for files added via browser upload, e.g. by creating subfolder with upload date.
+- Enable downloads of master files.
+- Maybe store upload/indexing timestamp in metadata.
+- Keep position in photo index when returning from details view.
+- Alternative photo index with time proportional distances between photos.
+- Maybe reduce size of images in portrait aspect ration to a height of e.g. 720px.
+- Maybe pre-compute images for different screen sizes and portrait/landscape views.
+- Warning when upload overwrites existing file.
+- Upload error handling.
+- Maybe increase upload chunk size to 2MB.
+- Notify user when upload is completed.
+- Warn users if they want to leave the upload page while uploads are in progress.
+- Improve ordering of photos by timestamp.
+- Maybe add inference of time zone information from location information.
+- When viewing single photos: move photos in the direction of swipe, allow zooming, allow full screen.
+- Production setup https://expressjs.com/en/advanced/best-practice-performance.html#in-environment.
+- Try to fill the entire screen with thumbs, i.e. no black margin on the right side of the screen.
+- Test user interface with larger number of devices.
+- Add HTML history api / browser back button.
+- Add handling of videos.
+- Ensure that analysis is never triggered twice when uploading images.
+- ACID compliant metadata, indexing and analysis process.
+- Add option for external files and metadata storage in order to handle larger amounts of photos.
+- Maybe get rid of dashes in IDs.
+- Logging with timestamp and log level instead of just console.log everywhere.
+- Fix handling of envrironment variable PXLS_ANALYZE_TEXT.
