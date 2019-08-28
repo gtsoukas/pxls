@@ -36,8 +36,8 @@ if (!fs.existsSync(THUMBS_PATH)){
 }
 
 // File system locaion of original files
-const MASTERS_GLOB = MASTERS_PATH + '/**/*.{JPG,jpg,jpeg}';
-const ALLOWED_FILE_ENDINGS = '.jpeg,.jpg,.JPG,.JPEG';
+const MASTERS_GLOB = MASTERS_PATH + '/**/*.{JPG,jpg,jpeg,png,PNG}';
+const ALLOWED_FILE_ENDINGS = '.jpeg,.jpg,.JPG,.JPEG,.png,.PNG';
 
 // File system location of metadata
 const OBJECTDB_PATH = path.join(DATA_PATH, 'objdb');
